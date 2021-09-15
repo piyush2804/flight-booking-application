@@ -1,0 +1,20 @@
+server:
+  port: 9000
+spring:
+ cloud:
+   gateway:
+      routes:
+      - id: flightsearchMicroservice
+        uri: http://localhost:8080/
+        predicates:
+        - Path=/**
+      - id: checkinMicroservice
+        uri: http://localhost:8082/
+        predicates:
+        - Path=/**
+      - id: checkinMicroservice
+        uri: http://localhost:8084/
+        predicates:
+        - Path=/**
+ application:
+    name: api-gateway
